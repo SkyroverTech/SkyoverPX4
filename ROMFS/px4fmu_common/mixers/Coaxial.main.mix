@@ -1,0 +1,66 @@
+Coaxial_Helicopter 120 degree Cyclic-Collective-Pitch Mixing (CCPM) for PX4FMU
+==================================================
+Maybe left y == Roll  and  right x == Pitch ?
+So I exchange channel0 and channel1
+
+
+Output 0 - Main Motor speed mixer - Motor1
+-----------------
+
+M: 1
+O:      10000  10000      0 -10000  10000
+S: 0 3      0  20000 -10000 -10000  10000
+
+
+Output 1 - Tail Motor speed Mixer - Motor2
+----------------
+
+M: 1
+O:      10000  10000      0 -10000  10000
+S: 0 3      0  20000 -10000 -10000  10000
+
+
+Output 2 - Upper Servo Mixer - Servo1
+----------------
+
+M: 1
+O:      10000  10000      0 -10000  10000
+S: 0 2  10000  10000      0 -10000  10000
+
+
+Output 3 - Rear Servo Mixer - Servo2
+----------------
+Rear Servo = Collective (Thrust - 3) + Elevator (Pitch - 1)
+
+M: 2
+O:      10000  10000      0 -10000  10000
+S: 0 3  10000  10000      0 -10000  10000
+S: 0 0  10000  10000      0 -10000  10000
+
+
+Output 4 - Left Servo Mixer - Servo3
+-----------------
+Left Servo = Collective (Thurst - 3) - 0.5 * Elevator (Pitch - 1) + 0.866 * Aileron (Roll - 0)
+
+M: 3
+O:       10000   10000      0 -10000  10000
+S: 0 3   10000   10000      0 -10000  10000
+S: 0 0   -5000   -5000      0 -10000  10000
+S: 0 1    8660    8660      0 -10000  10000
+
+
+Output 5 - Right Servo Mixer - Servo4
+----------------
+Right Servo = Collective (Thurst - 3) - 0.5 * Elevator (Pitch - 1) - 0.866 * Aileron (Roll - 0)
+
+
+M: 3
+O:       10000   10000      0 -10000  10000
+S: 0 3   10000   10000      0 -10000  10000
+S: 0 0   -5000   -5000      0 -10000  10000
+S: 0 1   -8660   -8660      0 -10000  10000
+
+
+
+
+

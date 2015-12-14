@@ -32,12 +32,8 @@ then
 fi
 
 # Transitional support: ensure suitable PWM min/max param values
-# if param compare PWM_MIN 1075
-# then
-# 	param set PWM_MIN 1230
-# fi
-param set PWM_MIN 1000
-param set PWM_MAX 2000
-# pwm disarmed -c 123456 -p 0
-# pwm failsafe -c 123456 -p 900
+if param compare PWM_MIN 1075
+then
+	param set PWM_MIN 1230
+fi
 
